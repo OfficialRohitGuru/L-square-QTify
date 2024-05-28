@@ -20,7 +20,7 @@ const NavBar = ({ data, logo = false, search = false, feedback = false }) => {
         </div>
         {search ? (
           <div className={styles.searchWrapper}>
-            <SearchBar placeholder="search" data={data} />
+            <SearchBar placeholder="search a song" data={data} />
           </div>
         ) : null}
         {feedback ? (

@@ -1,10 +1,12 @@
+// SearchBar.jsx
+
 import React, { useEffect, useState, useCallback } from "react";
 import styles from "./SearchBar.module.css";
 import { ReactComponent as SearchIcon } from "../../assets/Search icon.svg";
 import useComponentVisible from "../../components/hooks/useComponentVisible";
 import MenuItems from "../MenuItems/MenuItems";
 
-const SearchBar = ({ placeholder = "search", data }) => {
+const SearchBar = ({ placeholder, data }) => {
   const [inputValue, setInputValue] = useState("");
   const [filteredOptions, setFilteredOptions] = useState([]);
 
@@ -34,7 +36,7 @@ const SearchBar = ({ placeholder = "search", data }) => {
         <form className={styles.wrapper}>
           <input
             className={styles.search}
-            placeholder={placeholder}
+            placeholder={placeholder} // Use the placeholder prop directly
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
