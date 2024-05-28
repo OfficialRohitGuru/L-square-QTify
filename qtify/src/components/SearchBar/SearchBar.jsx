@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "./SearchBar.module.css";
 import { ReactComponent as SearchIcon } from "../../assets/Search icon.svg";
 import useComponentVisible from "../../components/hooks/useComponentVisible";
@@ -11,7 +11,7 @@ const SearchBar = ({ placeholder = "search", data }) => {
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(true);
 
-  const _filterData = (data) => {
+  const _filterData = useCallback((data) => {
     if (!inputValue) {
       setFilteredOptions([]);
       return;
@@ -22,11 +22,11 @@ const SearchBar = ({ placeholder = "search", data }) => {
     );
 
     setFilteredOptions(filteredOptions);
-  };
+  }, [inputValue]);
 
   useEffect(() => {
     _filterData(data);
-  }, [inputValue, data]);
+  }, [inputValue, data, _filterData]);
 
   return (
     <div>
